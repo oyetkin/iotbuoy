@@ -1,8 +1,8 @@
 # IoT Buoy
 
-< img src="https://upload.wikimedia.org/wikipedia/commons/c/cb/Toxic_Algae_Bloom_in_Lake_Erie.jpg" width="800" >
+< img src="https://mediad.publicbroadcasting.net/p/wxxi/files/styles/x_large/public/201907/bw9pc-0719_k.png" width="800" >
 
-Image credit NASA/USGS
+Lake Erie Algae Bloom 2019, (Image credit NOAA)
 
 An open source, low-cost envirnmental buoy designed to monitor the health of lakes, rivers, estuaries and tidal regions with particular emphasis on algae blooms.
 Designed by [Analytical Mechanics Associates](https://www.ama-inc.com/) and the [Virginia Modeling, Analysis & Simulation Center (VMASC)](https://www.odu.edu/vmasc).
@@ -131,7 +131,10 @@ OR
 - [Wide Angle Amber LEDs](https://lighthouseleds.com/3mm-diffused-flat-top-led-amber-orange-ultra-bright.html?gclid=CjwKCAjwmeiIBhA6EiwA-uaeFbw4fVEH2iwfen9D4Wmm7OOYcc3WVievBPmKvrvILAAn2A_0q_WB3RoCfAoQAvD_BwE)
 - Rope/anchor OR Rope/mooring OR free-floating
 
-### 12. 
 - [I2C Overview](https://learn.adafruit.com/i2c-addresses)
 
 - [Non-Exhaustive List of I2C Sensors and Addresses](https://learn.adafruit.com/i2c-addresses/the-list)
+
+### Harmful Algae Bloom Information
+
+- [HAB Guides and more](https://wcwc.ca/cyanobacteria-cyanotoxins/)
