@@ -1,3 +1,9 @@
+# IoT Buoy
+
+< img src="https://upload.wikimedia.org/wikipedia/commons/c/cb/Toxic_Algae_Bloom_in_Lake_Erie.jpg" width=800 >
+
+Image credit NASA/USGS
+
 An open source, low-cost envirnmental buoy designed to monitor the health of lakes, rivers, estuaries and tidal regions with particular emphasis on algae blooms.
 Designed by [Analytical Mechanics Associates](https://www.ama-inc.com/) and the [Virginia Modeling, Analysis & Simulation Center (VMASC)](https://www.odu.edu/vmasc).
 
@@ -108,6 +114,22 @@ OR
 - [MPU 6050 Inertial Measurement Unit (for wave height, direction etc.)](https://www.adafruit.com/product/3886)
 
 - [Vernier Sensors](https://www.vernier.com/product-category/?category=sensors&page_num=1)
+
+### 12. Miscellaneous
+
+- Zip Ties
+- SLA Resin
+- SD Card
+- Jumper wires
+- Header pins
+- Solder
+- Soldering iron
+- Wire strippers
+- Heat shrink tubing
+- DP 100 epoxy
+- 1/8 inch thick plexiglass cover
+- [Wide Angle Amber LEDs](https://lighthouseleds.com/3mm-diffused-flat-top-led-amber-orange-ultra-bright.html?gclid=CjwKCAjwmeiIBhA6EiwA-uaeFbw4fVEH2iwfen9D4Wmm7OOYcc3WVievBPmKvrvILAAn2A_0q_WB3RoCfAoQAvD_BwE)
+- Rope/anchor OR Rope/mooring OR free-floating
 
 ### 12. 
 - [I2C Overview](https://learn.adafruit.com/i2c-addresses)
