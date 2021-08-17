@@ -4,7 +4,7 @@ Designed by [Analytical Mechanics Associates](https://www.ama-inc.com/) and the 
 
 # Hardware required
 
-### 1. [Arduino UNO or ELEGOO UNO or Heltec CubeCell]
+### 1. Arduino UNO or ELEGOO UNO or Heltec CubeCell
 
 - [Arduino UNO R3](https://store.arduino.cc/usa/arduino-uno-rev3)
 
@@ -56,7 +56,7 @@ Designed by [Analytical Mechanics Associates](https://www.ama-inc.com/) and the 
 
 - [ADS1115 Sample Code](https://learn.adafruit.com/adafruit-4-channel-adc-breakouts/arduino-code)
 
-### 7. [LoRa (Low Power Radio) Shield for Arduino, multiple options below]
+### 7. LoRa (Low Power Radio) Shield for Arduino, multiple options below
 
 - [Robot Shop Arduino Shield](https://www.robotshop.com/en/lora-long-range-transceiver-shield-915-mhz-north-america.html)
 
