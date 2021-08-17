@@ -87,8 +87,8 @@ Designed by [Analytical Mechanics Associates](https://www.ama-inc.com/) and the 
 
 ### 11. Application Specific Sensors
 
-- [BME 280 Temperature, Pressure and Humidity Sensor](
-
+- [BME 280 Temperature, Pressure and Humidity Sensor](https://www.adafruit.com/product/2652?gclid=CjwKCAjwmeiIBhA6EiwA-uaeFSZ-NF_fIGoMKItD13WAFwLuqSzOlsIt3QiFYIm7f4G2JHgIPPHd5BoCa6EQAvD_BwE)
+- 
 - [DHT-11 Temperature/Humidity Sensor](https://www.adafruit.com/product/386)
 
 - [DHT-22 Temperature/Humidity Sensor](https://www.adafruit.com/product/385)
