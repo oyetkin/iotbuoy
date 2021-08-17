@@ -1,6 +1,6 @@
 # IoT Buoy
 
-< img src="https://upload.wikimedia.org/wikipedia/commons/c/cb/Toxic_Algae_Bloom_in_Lake_Erie.jpg" width=800 >
+< img src="https://upload.wikimedia.org/wikipedia/commons/c/cb/Toxic_Algae_Bloom_in_Lake_Erie.jpg" width="800" >
 
 Image credit NASA/USGS
 
