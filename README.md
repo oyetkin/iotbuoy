@@ -1,6 +1,6 @@
 # IoT Buoy
 
-<img src="https://mediad.publicbroadcasting.net/p/wxxi/files/styles/x_large/public/201907/bw9pc-0719_k.png" width="800">
+<img src="https://mediad.publicbroadcasting.net/p/wxxi/files/styles/x_large/public/201907/bw9pc-0719_k.png" width="1000">
 
 Lake Erie Algae Bloom 2019, (Image credit NOAA)
 
