@@ -10,7 +10,7 @@ Designed by [Analytical Mechanics Associates](https://www.ama-inc.com/) and the 
 
 # Hardware required
 
-### 1. Arduino UNO or ELEGOO UNO or Heltec CubeCell
+### 1. Arduino MEGA or ELEGOO MEGA or Heltec CubeCell
 
 - [Arduino MEGA R3](https://store.arduino.cc/usa/mega-2560-r3)
 
