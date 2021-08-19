@@ -12,9 +12,9 @@ Designed by [Analytical Mechanics Associates](https://www.ama-inc.com/) and the 
 
 ### 1. Arduino UNO or ELEGOO UNO or Heltec CubeCell
 
-- [Arduino UNO R3](https://store.arduino.cc/usa/arduino-uno-rev3)
+- [Arduino MEGA R3](https://store.arduino.cc/usa/mega-2560-r3)
 
-- [ELEGOO UNO R3](https://www.amazon.com/ELEGOO-Board-ATmega328P-ATMEGA16U2-Compliant/dp/B01EWOE0UU/ref=asc_df_B01EWOE0UU/?tag=hyprod-20&linkCode=df0&hvadid=309751315916&hvpos=&hvnetw=g&hvrand=3400657529787556783&hvpone=&hvptwo=&hvqmt=&hvdev=c&hvdvcmdl=&hvlocint=&hvlocphy=9008124&hvtargid=pla-455309014075&psc=1&tag=&ref=&adgrpid=67183599252&hvpone=&hvptwo=&hvadid=309751315916&hvpos=&hvnetw=g&hvrand=3400657529787556783&hvqmt=&hvdev=c&hvdvcmdl=&hvlocint=&hvlocphy=9008124&hvtargid=pla-455309014075)
+- [ELEGOO MEGA R3](https://www.amazon.com/ELEGOO-ATmega2560-ATMEGA16U2-Arduino-Compliant/dp/B01H4ZDYCE/ref=asc_df_B01H4ZDYCE/?tag=hyprod-20&linkCode=df0&hvadid=309751315916&hvpos=&hvnetw=g&hvrand=11900577637582741809&hvpone=&hvptwo=&hvqmt=&hvdev=c&hvdvcmdl=&hvlocint=&hvlocphy=9008124&hvtargid=pla-493625544636&psc=1&tag=&ref=&adgrpid=67183599252&hvpone=&hvptwo=&hvadid=309751315916&hvpos=&hvnetw=g&hvrand=11900577637582741809&hvqmt=&hvdev=c&hvdvcmdl=&hvlocint=&hvlocphy=9008124&hvtargid=pla-493625544636)
 
 - [Heltec CubeCell with LoRa](https://heltec.org/product/htcc-ab01/)
 
