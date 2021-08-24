@@ -5,8 +5,7 @@
 Lake Erie Algae Bloom 2019, (Image credit NOAA)
 
 An open source, low-cost envirnmental buoy designed to monitor the health of lakes, rivers, estuaries and tidal regions with particular emphasis on algae blooms.
-Designed by [Analytical Mechanics Associates](https://www.ama-inc.com/) and the [Virginia Modeling, Analysis & Simulation Center (VMASC)](https://www.odu.edu/vmasc).
-
+Designed by [Analytical Mechanics Associates](https://www.ama-inc.com/) and the [Virginia Modeling, Analysis & Simulation Center (VMASC)](https://www.odu.edu/vmasc). This project is compatible with the [Open Data Cube](https://www.opendatacube.org/), which is an open-source platform that can ingest data from a variety of sensors and has the goal of making environmental monitoring simple and highly accessible. 
 
 # Hardware required
 
@@ -22,19 +21,11 @@ Designed by [Analytical Mechanics Associates](https://www.ama-inc.com/) and the 
 
 - [Boost Converter Chip (TPS 61023) Data Sheets](https://www.ti.com/product/TPS61023)
 
-### 3. [SIM 808 GPRS/GPS/GSM Shield](https://www.robotshop.com/en/sim808-gps-gprsgsm-arduino-shield-mkf.html?gclid=EAIaIQobChMIl-Hpytn58QIVdGxvBB3DMgZVEAQYDSABEgJUg_D_BwE)
+### 3. [SIM 800 GPRS/GSM Shield](https://www.tinyosshop.com/sim800f-arduino-shield)
 
-- [Datasheet](https://www.robotshop.com/media/files/pdf/sim808-gps-gprsgsm-arduino-shield-mkf-datasheet.pdf)
+### 4. [SIM7600G GPRS/GSM/LTE/GPS](https://it.aliexpress.com/item/4000224044192.html?spm=a2g0o.detail.1000023.5.168266beAIrhDP)
 
-- [Schematic](https://www.robotshop.com/media/files/pdf/sim808-gps-gprsgsm-arduino-shield-mkf-schematic.pdf)
-
-- [Documentation](https://www.robotshop.com/media/files/zip/documentation_oas808sim.zip)
-
-- [Arduino Library](https://github.com/DFRobot/DFRobot_SIM808)
-
-- [SIM 808 GPS Tutorial (Similar board)](https://www.youtube.com/watch?v=fN8fwX3KmsM)
-
-### 4. [Adafruit Universal BQ24047 Charger](https://www.adafruit.com/product/4755)
+### 5. [Adafruit Universal BQ24047 Charger](https://www.adafruit.com/product/4755)
 
 - [BQ24074 Data Sheet](https://www.ti.com/product/BQ24074)
 
@@ -42,7 +33,7 @@ Designed by [Analytical Mechanics Associates](https://www.ama-inc.com/) and the 
 
 - [Adafruit BQ24074 Design Notes](https://learn.adafruit.com/adafruit-bq24074-universal-usb-dc-solar-charger-breakout/design-notes)
 
-### 5. [Adafruit Data Logging Shield](https://www.adafruit.com/product/1141?gclid=EAIaIQobChMI9OqQ1tr58QIVzXxvBB3GTgbGEAQYASABEgITQvD_BwE)
+### 6. [Adafruit Data Logging Shield](https://www.adafruit.com/product/1141?gclid=EAIaIQobChMI9OqQ1tr58QIVzXxvBB3GTgbGEAQYASABEgITQvD_BwE)
 
 - Requires [CR1220 Coin Cell Battery](https://www.grainger.com/product/54ZU79?ef_id=CjwKCAjwmeiIBhA6EiwA-uaeFeCfQyJyafe8bUuabPpTv9V-Dkiohqq99VO3asoSj661ExP630XgBhoCccUQAvD_BwE:G:s&s_kwcid=AL!2966!3!496359975085!!!g!484329633033!&gucid=N:N:PS:Paid:GGL:CSM-2293:99F1R6:20501231&gclid=CjwKCAjwmeiIBhA6EiwA-uaeFeCfQyJyafe8bUuabPpTv9V-Dkiohqq99VO3asoSj661ExP630XgBhoCccUQAvD_BwE&gclsrc=aw.ds)
 
@@ -50,7 +41,7 @@ Designed by [Analytical Mechanics Associates](https://www.ama-inc.com/) and the 
 
 - [Adafruit Data Logging Shield Fritzing Object](https://github.com/adafruit/Fritzing-Library/blob/master/parts/Adafruit%20Datalogger%20Shield%20v1.fzpz)
 
-### 6. [Adafruit ADS1115 Analog to Digital Converter](https://www.adafruit.com/product/1085?gclid=Cj0KCQjw0emHBhC1ARIsAL1QGNfJ3SJ85uZqejbk4At3gi_rBteSZwTxbq5_mKbJvcHG9wJhS_kqJ54aAu4vEALw_wcB)
+### 7. [Adafruit ADS1115 Analog to Digital Converter](https://www.adafruit.com/product/1085?gclid=Cj0KCQjw0emHBhC1ARIsAL1QGNfJ3SJ85uZqejbk4At3gi_rBteSZwTxbq5_mKbJvcHG9wJhS_kqJ54aAu4vEALw_wcB)
 
 - [ADS1115 Hardware Drivers](https://github.com/adafruit/Adafruit_ADS1X15)
 
@@ -62,7 +53,7 @@ Designed by [Analytical Mechanics Associates](https://www.ama-inc.com/) and the 
 
 - [ADS1115 Sample Code](https://learn.adafruit.com/adafruit-4-channel-adc-breakouts/arduino-code)
 
-### 7. LoRa (Low Power Radio) Shield for Arduino, multiple options below
+### 8. LoRa (Low Power Radio) Shield for Arduino, multiple options below
 
 - [Robot Shop Arduino Shield](https://www.robotshop.com/en/lora-long-range-transceiver-shield-915-mhz-north-america.html)
 
@@ -72,20 +63,20 @@ Designed by [Analytical Mechanics Associates](https://www.ama-inc.com/) and the 
 
 - Integrated Heltec CubeCell LoRa
 
-### 8. [Adafruit 6V 3.5W Solar Panel](https://www.adafruit.com/product/500)
+### 9. [Adafruit 6V 3.5W Solar Panel](https://www.adafruit.com/product/500)
 
 - [Solar Panel Technical Drawing](https://github.com/VoltaicEngineering/Solar-Panel-Drawings/blob/master/Voltaic%20Systems%203.5W%206V%20113x210mm%20DRAWING%20CURRENT%202017%207%2020.pdf)
 
-### 9. [2000 mAh 3.7V Lithium Ion Battery](https://www.adafruit.com/product/2011?gclid=Cj0KCQjwub-HBhCyARIsAPctr7z8nLmCm4o8cagw8cGOR2JvBQQupAMMokKOfB4LIsXs9-Lr6N-EV6MaAgagEALw_wcB)
+### 10. [2000 mAh 3.7V Lithium Ion Battery](https://www.adafruit.com/product/2011?gclid=Cj0KCQjwub-HBhCyARIsAPctr7z8nLmCm4o8cagw8cGOR2JvBQQupAMMokKOfB4LIsXs9-Lr6N-EV6MaAgagEALw_wcB)
 
-### 10. Housing
+### 11. Housing
 - Buoy with CAD files provided
 
 - Waterproof box
 
 - Your own design
 
-### 11. Application Specific Sensors
+### 12. Application Specific Sensors
 
 - [BME 280 Temperature, Pressure and Humidity Sensor](https://www.adafruit.com/product/2652?gclid=CjwKCAjwmeiIBhA6EiwA-uaeFSZ-NF_fIGoMKItD13WAFwLuqSzOlsIt3QiFYIm7f4G2JHgIPPHd5BoCa6EQAvD_BwE)
 
@@ -115,7 +106,7 @@ OR
 
 - [Vernier Sensors](https://www.vernier.com/product-category/?category=sensors&page_num=1)
 
-### 12. Miscellaneous
+### 13. Miscellaneous
 
 - Zip Ties
 - SLA Resin
