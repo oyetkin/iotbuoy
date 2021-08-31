@@ -20,6 +20,8 @@
 //Create software serial object to communicate with SIM808. Pin 7 is RX on GPRS/GPS/GSM shield and pin 8 is TX for the robotshop GPS/GPRS/GSM shield here
 // https://www.robotshop.com/en/sim808-gps-gprsgsm-arduino-shield-mkf.html?gclid=EAIaIQobChMIl-Hpytn58QIVdGxvBB3DMgZVEAQYDSABEgJUg_D_BwE
 // If you are using a different GSM/GPS/GPRS module, use the RX/TX pins given in the board specification.
+//SoftwareSerial Serial1(50,51); // RX, TX
+//Serial1
 
 Adafruit_BME280 bme; // Create a BME 280 instance
 RTC_PCF8523 rtc; // Create a real time clock instance
@@ -55,7 +57,7 @@ void setup()
     abort();
   }
   rtc.start();  
-
+  rtc.adjust(DateTime(F(__DATE__), F(__TIME__)));
   Serial.begin(57600); //Begin serial communication with Arduino and Arduino IDE (Serial Monitor)
   
   Serial1.begin(57600); //Begin serial communication with Arduino and SIM808
@@ -212,7 +214,7 @@ void UplinkData(measurement m, float dataval)
   
   delay(2000);
   updateSerial();
-  Serial1.println("{\"key\":\"" + device_name + "\",\"measurement_name\":\"" + m.type + "\",\"unit\":\"" + m.unit +"\",\"value\":" + String(dataval) + ",\"timestamp\":\"" + String(now.month()) + "/" + String(now.day()) + "/" + String(now.year()) + " " + String(now.hour()) + "-" + String(now.minute()) + "-" + String(now.second()) + "\",\"lat\":\"" +  String(gps.location.lat()) + "\",\"lon\":\"" + String(gps.location.lng()) + "\"}"); // Send the json string
+  Serial1.println("{\"key\":\"" + device_name + "\",\"measurement_name\":\"" + m.type + "\",\"unit\":\"" + m.unit +"\",\"value\":" + String(dataval) + ",\"timestamp\":\"" + String(now.month()) + "/" + String(now.day()) + "/" + String(now.year()) + " " + String(now.hour()) + ":" + String(now.minute()) + ":" + String(now.second()) + "\",\"lat\":\"" +  String(gps.location.lat()) + "\",\"lon\":\"" + String(gps.location.lng()) + "\"}"); // Send the json string
   delay(5000);
   updateSerial();
   Serial1.println("AT+HTTPACTION=1"); // 1 for post, 0 for get
