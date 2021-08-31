@@ -8,7 +8,6 @@
  *
  */
 
-#include <SoftwareSerial.h>
 #include <Wire.h>
 #include <Adafruit_BME280.h>
 #include <Adafruit_Sensor.h>
@@ -21,8 +20,6 @@
 //Create software serial object to communicate with SIM808. Pin 7 is RX on GPRS/GPS/GSM shield and pin 8 is TX for the robotshop GPS/GPRS/GSM shield here
 // https://www.robotshop.com/en/sim808-gps-gprsgsm-arduino-shield-mkf.html?gclid=EAIaIQobChMIl-Hpytn58QIVdGxvBB3DMgZVEAQYDSABEgJUg_D_BwE
 // If you are using a different GSM/GPS/GPRS module, use the RX/TX pins given in the board specification.
-//SoftwareSerial Serial1(50,51); // RX, TX
-//Serial1
 
 Adafruit_BME280 bme; // Create a BME 280 instance
 RTC_PCF8523 rtc; // Create a real time clock instance
