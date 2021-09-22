@@ -16,12 +16,11 @@
 #include "RTClib.h"
 #include <SPI.h>
 #include <SD.h>
+#include <Adafruit_ADS1X15.h>
 
 //Create software serial object to communicate with SIM808. Pin 7 is RX on GPRS/GPS/GSM shield and pin 8 is TX for the robotshop GPS/GPRS/GSM shield here
 // https://www.robotshop.com/en/sim808-gps-gprsgsm-arduino-shield-mkf.html?gclid=EAIaIQobChMIl-Hpytn58QIVdGxvBB3DMgZVEAQYDSABEgJUg_D_BwE
 // If you are using a different GSM/GPS/GPRS module, use the RX/TX pins given in the board specification.
-//SoftwareSerial Serial1(50,51); // RX, TX
-//Serial1
 
 Adafruit_BME280 bme; // Create a BME 280 instance
 RTC_PCF8523 rtc; // Create a real time clock instance
@@ -29,6 +28,38 @@ TinyGPSPlus gps;
 String device_name = "IoT_Station_2"; // Name your station
 String dataout;
 File myFile;
+Adafruit_ADS1115 ads;  /* Use this for the 16-bit version */
+
+const int pHPin = 23; // pH probe pin
+const int FluorometerPin = 24; // Flurometer digital input pin
+const int ThermPin = 25; // Thermistor pin
+const int ComTurbPin = 26; // Commercial turbidity pin
+const int NumSamples = 5; // How many samples do you want each sensor to take
+int samples[NumSamples]; // Iterable for determining averages for each measurement
+
+const int red_led = 53;
+const int green_led = 52;
+const int blue_led = 51;
+const int blue_led_fluor = 22;
+
+int16_t blank_valuer = 0;
+int16_t red_value = 0;
+int16_t blank_valueg = 0;
+int16_t green_value = 0;
+int16_t blank_valueb = 0;
+int16_t blue_value =  0;
+int16_t blank_value2r = 0;
+int16_t red_value2 = 0;
+int16_t blank_value2g = 0;
+int16_t green_value2 = 0;
+int16_t blank_value2b = 0;
+int16_t blue_value2 =  0;
+int delay_intersample = 400;
+int delay_intertest = 500;
+int delay_blank = 5;  //keep this short
+
+uint8_t i;
+float average;
 
 //This struct defines a category of measurement, like "temperature" or "humidity."
 struct measurement {
@@ -45,13 +76,19 @@ typedef struct measurement Measurement;
   
 //Create an instance of Measurement for each of the kinds of measurements your sensor will record
 //the format is {min_value, increment, units, measurement name, graph_min, graph_max, hardware name}
+
 Measurement pressure = {80000.0, 1.0, "Pa", "pressure", 30000, 140000, "BME280"};
 Measurement temperature = {0.0, 0.01, "Celsius", "temperature", -40, 85, "BME280"};
 Measurement humidity = {0, 0.01, "Relative %", "humidity", 0, 100, "BME280"};
+Measurement turbidity = {0, 0.01, "Relative %", "turbidity", 0, 100, "TurbSens"};
+Measurement comTurbidity = {0, 0.01, "Relative %", "turbidity", 0, 100, "ComTurbSens"};
+Measurement pH = {0, 0.01, "pH", "pH", 0, 14, "pHProbe"};
+Measurement waterTemp = {0, 0.01, "Celsius", "temperature", 0, 100, "Thermistor"};
+Measurement fluorescence = {0, 0.01, "Relative %", "fluorescence", 0, 100, "Fluorometer"};
 
 void setup()
 {    
-    
+//    
     if (! rtc.begin()) { // Flush serial, this is necessary for the program to work
     Serial.flush();
     abort();
@@ -59,7 +96,7 @@ void setup()
   rtc.start();  
   rtc.adjust(DateTime(F(__DATE__), F(__TIME__)));
   Serial.begin(57600); //Begin serial communication with Arduino and Arduino IDE (Serial Monitor)
-  
+
   Serial1.begin(57600); //Begin serial communication with Arduino and SIM808
 
   delay(100);
@@ -69,10 +106,12 @@ void setup()
 
 void Initialize()
 { 
+  ads.begin();
+
   bme.begin(); // Initialize the BME 280
-  
+
   Serial1.println("AT"); //Once the handshake test is successful, it will back to OK
-  
+
   updateSerial(); // Return the response to the serial port for display purposes, and print anything from either serial or SoftwareSerial. May be able to remove in actual deployment pending testing
   
   Serial1.println("AT+CSQ"); //Signal quality test, value range is 0-31 , 31 is the best
@@ -276,12 +315,148 @@ String SDRead(){
   return dataout;
 }
 
+
+float readTurbidity()
+{
+
+  int16_t adc0, adc1, adc2, adc3;
+  ads.setGain(GAIN_SIXTEEN);    // 16x gain  +/- 0.256V  1 bit = 0.125mV  0.0078125mV
+  blank_valuer = ads.readADC_SingleEnded(0);
+  blank_value2r = ads.readADC_SingleEnded(1);
+  //blank_value2 = ads.readADC_SingleEnded(1);
+  delay(delay_blank);
+  digitalWrite(red_led, HIGH);
+  red_value = ads.readADC_SingleEnded(0);
+  red_value2 = ads.readADC_SingleEnded(1);
+  digitalWrite(red_led, LOW);
+  delay(delay_intersample);
+
+  blank_valueg = ads.readADC_SingleEnded(0);
+  blank_value2g = ads.readADC_SingleEnded(1);
+  //blank_value2 = ads.readADC_SingleEnded(1);
+  delay(delay_blank);
+  digitalWrite(green_led, HIGH);
+  green_value = ads.readADC_SingleEnded(0);
+  green_value2 = ads.readADC_SingleEnded(1);
+  digitalWrite(green_led, LOW);
+  delay(delay_intersample);
+
+  blank_valueb = ads.readADC_SingleEnded(0);
+  blank_value2b = ads.readADC_SingleEnded(1);
+  //blank_value2 = ads.readADC_SingleEnded(1);
+  delay(delay_blank);
+  digitalWrite(blue_led, HIGH);
+  blue_value = ads.readADC_SingleEnded(0);
+  blue_value2 = ads.readADC_SingleEnded(1);
+  digitalWrite(blue_led, LOW);
+
+  int16_t red_corrected = red_value - blank_valuer;
+  int16_t green_corrected = green_value - blank_valueg;
+  int16_t blue_corrected =  blue_value - blank_valueb;
+  int16_t red_corrected2 = red_value2 - blank_value2r;
+  int16_t green_corrected2 = green_value2 - blank_value2g;
+  int16_t blue_corrected2 = blue_value2 - blank_value2b;
+
+  
+}
+
+float readComTurbidity()
+{
+// Add and divide by 5**
+  memset(samples, 0, sizeof(samples)); // reset the sample averaging array
+  
+  for (i=0; i< NumSamples; i++) {  // take N samples in a row, with a slight delay
+   samples[i] = analogRead(ThermPin);
+   delay(10);
+  }
+  average = 0;  // average all the samples out
+  for (i=0; i< NumSamples; i++) {
+     average += samples[i];
+  }
+  average /= NumSamples;
+  average = 1023 / average - 1;
+
+  return average;
+}
+
+float readpH()
+{
+  // Digital write pins instead of just +5V, keep low unless sensor powered on
+  memset(samples, 0, sizeof(samples)); // reset the sample averaging array
+  for (i=0; i< NumSamples; i++) {
+   samples[i] = analogRead(pHPin);
+   delay(10);
+  }
+    average = 0;  // average all the samples out
+  for (i=0; i< NumSamples; i++) {
+     average += samples[i];
+  }
+  average /= NumSamples;
+  
+  average = 1023 / average - 1;
+  float phValue=(float)average*5.0/1024/6; //convert the analog into millivolt
+  phValue=3.5*phValue;                      //convert the millivolt into pH value
+  return phValue;
+}
+
+float readWaterTemp()
+{
+  // Code modified from https://learn.adafruit.com/thermistor/using-a-thermistor
+  // take N samples in a row, with a slight delay
+  memset(samples, 0, sizeof(samples)); // reset the sample averaging array
+  
+  for (i=0; i< NumSamples; i++) {
+   samples[i] = analogRead(ThermPin);
+   delay(10);
+  }
+
+  average = 0;  // average all the samples out
+  for (i=0; i< NumSamples; i++) {
+     average += samples[i];
+  }
+  average /= NumSamples;
+  
+  average = 1023 / average - 1;
+  average = 10000 / average; // resistance value, 10 kOhms. Change this if you are using another resistance.
+
+  float ThermistorTemp;
+  ThermistorTemp = average / 10000;     // (R/Ro) measured resistance / 10kOhms
+  ThermistorTemp = log(ThermistorTemp);                  // ln(R/Ro)
+  ThermistorTemp /= 3950;                   // 1/B * ln(R/Ro)   for the Adafruit thermistor the B coefficient is 3950
+  ThermistorTemp += 1.0 / (25 + 273.15); // + (1/To) 25C is the nominal temp
+  ThermistorTemp = 1.0 / ThermistorTemp;                 // Invert
+  ThermistorTemp -= 273.15;                         // convert absolute temp to C
+  return ThermistorTemp;
+}
+
+float readFluorescence()
+{
+  // take N samples in a row, with a slight delay
+  memset(samples, 0, sizeof(samples)); // reset the sample averaging array
+  
+  for (i=0; i< NumSamples; i++) {
+   samples[i] = analogRead(ThermPin);
+   delay(10);
+  }
+
+  average = 0;  // average all the samples out
+  for (i=0; i< NumSamples; i++) {
+     average += samples[i];
+  }
+  average /= NumSamples;
+  
+  average = 1023 / average - 1;
+  Serial.print("Fluorometer voltage");
+  Serial.println(average);
+  return average;
+}
+
 void loop()
 {
   Initialize();
 
   delay(1000);  
-  
+
   UplinkData(temperature, bme.readTemperature()); // Read temperature
   
   delay(1000);
@@ -294,4 +469,21 @@ void loop()
   
   delay(1000);
 
+  UplinkData(turbidity, readTurbidity());
+
+  delay(1000);
+
+  UplinkData(comTurbidity, readComTurbidity());
+
+  delay(1000);
+
+  UplinkData(pH, readpH());
+
+  delay(1000);
+
+  UplinkData(waterTemp, readWaterTemp());
+
+  delay(1000);
+
+  UplinkData(fluorescence, readFluorescence());
 }
