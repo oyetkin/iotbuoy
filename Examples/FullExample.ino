@@ -25,7 +25,7 @@
 Adafruit_BME280 bme; // Create a BME 280 instance
 RTC_PCF8523 rtc; // Create a real time clock instance
 TinyGPSPlus gps;
-String device_name = "IoT_Station_2"; // Name your station
+String device_name = "Ursula_2"; // Name your station
 String dataout;
 File myFile;
 Adafruit_ADS1115 ads;  /* Use this for the 16-bit version */
@@ -34,11 +34,19 @@ const int pHPin = 23; // pH probe pin
 const int FluorometerPin = 24; // Flurometer digital input pin
 const int ThermPin = 25; // Thermistor pin
 const int ComTurbPin = 26; // Commercial turbidity pin
+
+const int ActiveFluor = 35; // Pin for +5V to fluorometer
+const int ActiveCTurb = 37; // Pin for +5V to Comm Turbidity Sensor
+const int ActiveTurbLDR1 = 39; // Pin for +5V for Turb LDR 1
+const int ActiveTurbLDR2 = 41; // Pin for +5V for Turb LDR 2
+const int ActivepH = 43; // Pin for +5V for pH
+const int ActiveTherm = 45; // Pin for +5V for Thermistor
+
 const int NumSamples = 5; // How many samples do you want each sensor to take
-int samples[NumSamples]; // Iterable for determining averages for each measurement
+float samples = 0; // This object collects a sum of each sample data, which is then divided by the number of samples to get the average.
 
 const int red_led = 53;
-const int green_led = 52;
+const int green_led = 47;
 const int blue_led = 51;
 const int blue_led_fluor = 22;
 
@@ -80,8 +88,13 @@ typedef struct measurement Measurement;
 Measurement pressure = {80000.0, 1.0, "Pa", "pressure", 30000, 140000, "BME280"};
 Measurement temperature = {0.0, 0.01, "Celsius", "temperature", -40, 85, "BME280"};
 Measurement humidity = {0, 0.01, "Relative %", "humidity", 0, 100, "BME280"};
-Measurement turbidity = {0, 0.01, "Relative %", "turbidity", 0, 100, "TurbSens"};
-Measurement comTurbidity = {0, 0.01, "Relative %", "turbidity", 0, 100, "ComTurbSens"};
+Measurement redturbidity = {0, 0.01, "Relative %", "redturbidity", 0, 100, "TurbSens"};
+Measurement redturbidity2 = {0, 0.01, "Relative %", "redturbidity2", 0, 100, "TurbSens"};
+Measurement greenturbidity = {0, 0.01, "Relative %", "greenturbidity", 0, 100, "TurbSens"};
+Measurement greenturbidity2 = {0, 0.01, "Relative %", "greenturbidity2", 0, 100, "TurbSens"};
+Measurement blueturbidity = {0, 0.01, "Relative %", "blueturbidity", 0, 100, "TurbSens"};
+Measurement blueturbidity2 = {0, 0.01, "Relative %", "blueturbidity2", 0, 100, "TurbSens"};
+Measurement comTurbidity = {0, 0.01, "Relative %", "commturbidity", 0, 100, "ComTurbSens"};
 Measurement pH = {0, 0.01, "pH", "pH", 0, 14, "pHProbe"};
 Measurement waterTemp = {0, 0.01, "Celsius", "temperature", 0, 100, "Thermistor"};
 Measurement fluorescence = {0, 0.01, "Relative %", "fluorescence", 0, 100, "Fluorometer"};
@@ -316,9 +329,8 @@ String SDRead(){
 }
 
 
-float readTurbidity()
+int* readTurbidity()
 {
-
   int16_t adc0, adc1, adc2, adc3;
   ads.setGain(GAIN_SIXTEEN);    // 16x gain  +/- 0.256V  1 bit = 0.125mV  0.0078125mV
   blank_valuer = ads.readADC_SingleEnded(0);
@@ -357,65 +369,51 @@ float readTurbidity()
   int16_t green_corrected2 = green_value2 - blank_value2g;
   int16_t blue_corrected2 = blue_value2 - blank_value2b;
 
+  static int RGB_vals[6] = {red_corrected, red_corrected2, green_corrected, green_corrected2, blue_corrected, blue_corrected2};
+  return RGB_vals;
   
 }
 
 float readComTurbidity()
 {
-// Add and divide by 5**
-  memset(samples, 0, sizeof(samples)); // reset the sample averaging array
-  
+  samples = 0;
+  digitalWrite(ActiveCTurb, HIGH); // Turn on commercial turbidity sensor
   for (i=0; i< NumSamples; i++) {  // take N samples in a row, with a slight delay
-   samples[i] = analogRead(ThermPin);
+    
+   samples+= analogRead(ComTurbPin);
    delay(10);
   }
-  average = 0;  // average all the samples out
-  for (i=0; i< NumSamples; i++) {
-     average += samples[i];
-  }
-  average /= NumSamples;
-  average = 1023 / average - 1;
-
+  average = samples/NumSamples; // Calculate the average of all samples
+  average = 5*average/1023; // Convert to voltage
+  digitalWrite(ActiveCTurb, LOW); // Turn off commercial turbidity sensor
   return average;
 }
 
 float readpH()
 {
-  // Digital write pins instead of just +5V, keep low unless sensor powered on
-  memset(samples, 0, sizeof(samples)); // reset the sample averaging array
-  for (i=0; i< NumSamples; i++) {
-   samples[i] = analogRead(pHPin);
+  samples = 0;
+  digitalWrite(ActivepH, HIGH); // Turn on pH sensor
+  for (i=0; i< NumSamples; i++) {  // take N samples in a row, with a slight delay
+   samples+= analogRead(pHPin);
    delay(10);
   }
-    average = 0;  // average all the samples out
-  for (i=0; i< NumSamples; i++) {
-     average += samples[i];
-  }
-  average /= NumSamples;
-  
-  average = 1023 / average - 1;
-  float phValue=(float)average*5.0/1024/6; //convert the analog into millivolt
-  phValue=3.5*phValue;                      //convert the millivolt into pH value
-  return phValue;
+  average = samples/NumSamples; // Calculate the average of all samples
+  average = 5*average/1023; // Convert to voltage
+//  float phValue = (-5.70 *average) + 21.34; //convert the voltage into millivolt and then to pH with *3.5
+  digitalWrite(ActivepH, LOW); // Turn off pH sensor
+  return average;
 }
 
 float readWaterTemp()
 {
   // Code modified from https://learn.adafruit.com/thermistor/using-a-thermistor
-  // take N samples in a row, with a slight delay
-  memset(samples, 0, sizeof(samples)); // reset the sample averaging array
-  
-  for (i=0; i< NumSamples; i++) {
-   samples[i] = analogRead(ThermPin);
+  samples = 0;
+  digitalWrite(ActiveTherm, HIGH); // Turn on thermistor
+  for (i=0; i< NumSamples; i++) {  // take N samples in a row, with a slight delay
+   samples+= analogRead(ThermPin);
    delay(10);
   }
-
-  average = 0;  // average all the samples out
-  for (i=0; i< NumSamples; i++) {
-     average += samples[i];
-  }
-  average /= NumSamples;
-  
+  average = samples/NumSamples;
   average = 1023 / average - 1;
   average = 10000 / average; // resistance value, 10 kOhms. Change this if you are using another resistance.
 
@@ -426,28 +424,23 @@ float readWaterTemp()
   ThermistorTemp += 1.0 / (25 + 273.15); // + (1/To) 25C is the nominal temp
   ThermistorTemp = 1.0 / ThermistorTemp;                 // Invert
   ThermistorTemp -= 273.15;                         // convert absolute temp to C
+  digitalWrite(ActiveTherm, LOW); // Turn off Thermistor
   return ThermistorTemp;
 }
 
 float readFluorescence()
 {
-  // take N samples in a row, with a slight delay
-  memset(samples, 0, sizeof(samples)); // reset the sample averaging array
-  
-  for (i=0; i< NumSamples; i++) {
-   samples[i] = analogRead(ThermPin);
-   delay(10);
+  samples = 0;
+  digitalWrite(ActiveFluor, HIGH); // Turn on fluorometer
+  digitalWrite(blue_led_fluor, HIGH);
+  for (i=0; i< NumSamples; i++) {  // take N samples in a row, with a slight delay
+   samples+= analogRead(FluorometerPin);
+   delay(100);
   }
-
-  average = 0;  // average all the samples out
-  for (i=0; i< NumSamples; i++) {
-     average += samples[i];
-  }
-  average /= NumSamples;
-  
-  average = 1023 / average - 1;
-  Serial.print("Fluorometer voltage");
-  Serial.println(average);
+  average = samples/NumSamples; // Calculate the average of all samples
+  average = 5*average/1023; // Convert to voltage
+  digitalWrite(ActiveFluor, LOW); // Turn off fluorometer
+  digitalWrite(blue_led_fluor, HIGH);
   return average;
 }
 
@@ -466,10 +459,36 @@ void loop()
   delay(1000);
   
   UplinkData(humidity, bme.readHumidity()); // Read humidity
+
+  delay(1000);
   
+  int *Turbvals;
+  
+  Turbvals = readTurbidity();
+
+  delay(1000);
+  
+  UplinkData(redturbidity, Turbvals[0]);
+
   delay(1000);
 
-  UplinkData(turbidity, readTurbidity());
+  UplinkData(redturbidity2, Turbvals[1]);
+
+  delay(1000);
+
+  UplinkData(greenturbidity, Turbvals[2]);
+
+  delay(1000);
+
+  UplinkData(greenturbidity2, Turbvals[3]);
+
+  delay(1000);
+
+  UplinkData(blueturbidity, Turbvals[4]);
+
+  delay(1000);
+
+  UplinkData(blueturbidity2, Turbvals[5]);
 
   delay(1000);
 
