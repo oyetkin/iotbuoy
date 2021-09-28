@@ -4,7 +4,7 @@
  * Adafruit Unified Sensor
  *
  * Author: Alex Horvath, Analytical Mechanics Associates
- * With code contributed from Arjun Tambe
+ * With code contributed from Arjun Tambe and Oguz Yetkin
  *
  */
 
@@ -335,9 +335,9 @@ int* readTurbidity()
   ads.setGain(GAIN_SIXTEEN);    // 16x gain  +/- 0.256V  1 bit = 0.125mV  0.0078125mV
   blank_valuer = ads.readADC_SingleEnded(0);
   blank_value2r = ads.readADC_SingleEnded(1);
-  //blank_value2 = ads.readADC_SingleEnded(1);
   delay(delay_blank);
   digitalWrite(red_led, HIGH);
+  delay(2000);
   red_value = ads.readADC_SingleEnded(0);
   red_value2 = ads.readADC_SingleEnded(1);
   digitalWrite(red_led, LOW);
@@ -345,9 +345,9 @@ int* readTurbidity()
 
   blank_valueg = ads.readADC_SingleEnded(0);
   blank_value2g = ads.readADC_SingleEnded(1);
-  //blank_value2 = ads.readADC_SingleEnded(1);
   delay(delay_blank);
   digitalWrite(green_led, HIGH);
+  delay(2000);
   green_value = ads.readADC_SingleEnded(0);
   green_value2 = ads.readADC_SingleEnded(1);
   digitalWrite(green_led, LOW);
@@ -355,9 +355,9 @@ int* readTurbidity()
 
   blank_valueb = ads.readADC_SingleEnded(0);
   blank_value2b = ads.readADC_SingleEnded(1);
-  //blank_value2 = ads.readADC_SingleEnded(1);
   delay(delay_blank);
   digitalWrite(blue_led, HIGH);
+  delay(2000);
   blue_value = ads.readADC_SingleEnded(0);
   blue_value2 = ads.readADC_SingleEnded(1);
   digitalWrite(blue_led, LOW);
