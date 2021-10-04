@@ -39,8 +39,10 @@ const int ActiveFluor = 35; // Pin for +5V to fluorometer
 const int ActiveCTurb = 37; // Pin for +5V to Comm Turbidity Sensor
 const int ActiveTurbLDR1 = 39; // Pin for +5V for Turb LDR 1
 const int ActiveTurbLDR2 = 41; // Pin for +5V for Turb LDR 2
-const int ActivepH = 43; // Pin for +5V for pH
+const int ActivepH = 43; // Pin for +5V for pH]
 const int ActiveTherm = 45; // Pin for +5V for Thermistor
+
+pinMode(ActivepH, OUTPUT);
 
 const int NumSamples = 5; // How many samples do you want each sensor to take
 float samples = 0; // This object collects a sum of each sample data, which is then divided by the number of samples to get the average.
@@ -398,10 +400,9 @@ float readpH()
    delay(10);
   }
   average = samples/NumSamples; // Calculate the average of all samples
-  average = 5*average/1023; // Convert to voltage
-//  float phValue = (-5.70 *average) + 21.34; //convert the voltage into millivolt and then to pH with *3.5
+  float pH = (-0.00165*average) + 41.122;
   digitalWrite(ActivepH, LOW); // Turn off pH sensor
-  return average;
+  return pH;
 }
 
 float readWaterTemp()
