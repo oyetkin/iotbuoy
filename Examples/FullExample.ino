@@ -406,26 +406,27 @@ float readpH()
 
 float readWaterTemp()
 {
+  
+  float Bval = 3950.0;   // best fit B-Value
+  float Rstd = 10000.0;   // best fit standard resistance
+  float Tstd = 25.0;     // best fit standard temp
+  
   // Code modified from https://learn.adafruit.com/thermistor/using-a-thermistor
-  samples = 0;
+  Data = 0;
   digitalWrite(ActiveTherm, HIGH); // Turn on thermistor
   for (i=0; i< NumSamples; i++) {  // take N samples in a row, with a slight delay
-   samples+= analogRead(ThermPin);
+   Data += ads.readADC_SingleEnded(2);  
    delay(10);
   }
-  average = samples/NumSamples;
-  average = 1023 / average - 1;
-  average = 10000 / average; // resistance value, 10 kOhms. Change this if you are using another resistance.
 
-  float ThermistorTemp;
-  ThermistorTemp = average / 10000;     // (R/Ro) measured resistance / 10kOhms
-  ThermistorTemp = log(ThermistorTemp);                  // ln(R/Ro)
-  ThermistorTemp /= 3950;                   // 1/B * ln(R/Ro)   for the Adafruit thermistor the B coefficient is 3950
-  ThermistorTemp += 1.0 / (25 + 273.15); // + (1/To) 25C is the nominal temp
-  ThermistorTemp = 1.0 / ThermistorTemp;                 // Invert
-  ThermistorTemp -= 273.15;                         // convert absolute temp to C
+  Data = Data/NumSamples;
+
+  float stA = (1.0 / (Tstd + 273.15)) - ((1.0 / Bval) * log(Rstd));  // Steinhart A
+  float stB = 1.0 / Bval;      // Steinhart B
+  float Tc = 1.0 / (stA + (stB * log(Data))) - 273.15;
   digitalWrite(ActiveTherm, LOW); // Turn off Thermistor
-  return ThermistorTemp;
+  
+  return Tc;
 }
 
 float readFluorescence()
