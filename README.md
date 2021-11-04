@@ -9,13 +9,11 @@ Designed by [Analytical Mechanics Associates](https://www.ama-inc.com/) and the 
 
 # Hardware required
 
-### 1. Arduino MEGA or ELEGOO MEGA or Heltec CubeCell
+### 1. Arduino MEGA or ELEGOO MEGA
 
 - [Arduino MEGA R3](https://store.arduino.cc/usa/mega-2560-r3)
 
 - [ELEGOO MEGA R3](https://www.amazon.com/ELEGOO-ATmega2560-ATMEGA16U2-Arduino-Compliant/dp/B01H4ZDYCE/ref=asc_df_B01H4ZDYCE/?tag=hyprod-20&linkCode=df0&hvadid=309751315916&hvpos=&hvnetw=g&hvrand=11900577637582741809&hvpone=&hvptwo=&hvqmt=&hvdev=c&hvdvcmdl=&hvlocint=&hvlocphy=9008124&hvtargid=pla-493625544636&psc=1&tag=&ref=&adgrpid=67183599252&hvpone=&hvptwo=&hvadid=309751315916&hvpos=&hvnetw=g&hvrand=11900577637582741809&hvqmt=&hvdev=c&hvdvcmdl=&hvlocint=&hvlocphy=9008124&hvtargid=pla-493625544636)
-
-- [Heltec CubeCell with LoRa](https://heltec.org/product/htcc-ab01/)
 
 ### 2. [Adafruit Boost Converter](https://www.adafruit.com/product/4654?gclid=EAIaIQobChMI0a7O6eH38QIVCWxvBB0nXAA6EAQYASABEgIBAvD_BwE)
 
@@ -23,9 +21,7 @@ Designed by [Analytical Mechanics Associates](https://www.ama-inc.com/) and the 
 
 ### 3. [SIM 800 GPRS/GSM Shield](https://www.tinyosshop.com/sim800f-arduino-shield)
 
-### 4. [SIM7600G GPRS/GSM/LTE/GPS](https://it.aliexpress.com/item/4000224044192.html?spm=a2g0o.detail.1000023.5.168266beAIrhDP)
-
-### 5. [Adafruit Universal BQ24047 Charger](https://www.adafruit.com/product/4755)
+### 4. [Adafruit Universal BQ24047 Charger](https://www.adafruit.com/product/4755)
 
 - [BQ24074 Data Sheet](https://www.ti.com/product/BQ24074)
 
@@ -33,7 +29,7 @@ Designed by [Analytical Mechanics Associates](https://www.ama-inc.com/) and the 
 
 - [Adafruit BQ24074 Design Notes](https://learn.adafruit.com/adafruit-bq24074-universal-usb-dc-solar-charger-breakout/design-notes)
 
-### 6. [Adafruit Data Logging Shield](https://www.adafruit.com/product/1141?gclid=EAIaIQobChMI9OqQ1tr58QIVzXxvBB3GTgbGEAQYASABEgITQvD_BwE)
+### 5. [Adafruit Data Logging Shield](https://www.adafruit.com/product/1141?gclid=EAIaIQobChMI9OqQ1tr58QIVzXxvBB3GTgbGEAQYASABEgITQvD_BwE)
 
 - Requires [CR1220 Coin Cell Battery](https://www.grainger.com/product/54ZU79?ef_id=CjwKCAjwmeiIBhA6EiwA-uaeFeCfQyJyafe8bUuabPpTv9V-Dkiohqq99VO3asoSj661ExP630XgBhoCccUQAvD_BwE:G:s&s_kwcid=AL!2966!3!496359975085!!!g!484329633033!&gucid=N:N:PS:Paid:GGL:CSM-2293:99F1R6:20501231&gclid=CjwKCAjwmeiIBhA6EiwA-uaeFeCfQyJyafe8bUuabPpTv9V-Dkiohqq99VO3asoSj661ExP630XgBhoCccUQAvD_BwE&gclsrc=aw.ds)
 
@@ -41,7 +37,7 @@ Designed by [Analytical Mechanics Associates](https://www.ama-inc.com/) and the 
 
 - [Adafruit Data Logging Shield Fritzing Object](https://github.com/adafruit/Fritzing-Library/blob/master/parts/Adafruit%20Datalogger%20Shield%20v1.fzpz)
 
-### 7. [Adafruit ADS1115 Analog to Digital Converter](https://www.adafruit.com/product/1085?gclid=Cj0KCQjw0emHBhC1ARIsAL1QGNfJ3SJ85uZqejbk4At3gi_rBteSZwTxbq5_mKbJvcHG9wJhS_kqJ54aAu4vEALw_wcB)
+### 6. [Adafruit ADS1115 Analog to Digital Converter](https://www.adafruit.com/product/1085?gclid=Cj0KCQjw0emHBhC1ARIsAL1QGNfJ3SJ85uZqejbk4At3gi_rBteSZwTxbq5_mKbJvcHG9wJhS_kqJ54aAu4vEALw_wcB)
 
 - [ADS1115 Hardware Drivers](https://github.com/adafruit/Adafruit_ADS1X15)
 
@@ -53,17 +49,7 @@ Designed by [Analytical Mechanics Associates](https://www.ama-inc.com/) and the 
 
 - [ADS1115 Sample Code](https://learn.adafruit.com/adafruit-4-channel-adc-breakouts/arduino-code)
 
-### 8. LoRa (Low Power Radio) Shield for Arduino, multiple options below
-
-- [Robot Shop Arduino Shield](https://www.robotshop.com/en/lora-long-range-transceiver-shield-915-mhz-north-america.html)
-
-- [Mouser](https://www.mouser.com/ProductDetail/Seeed-Studio/114990615?qs=GZwCxkjl%252BU02ODDBHQ6wrw%3D%3D&mgh=1&gclid=CjwKCAjwmeiIBhA6EiwA-uaeFaJqVSd_8R8S7FPkOtLFqNHqhg4PfNqeeffRmbkIANvW5aL6GEvN3hoCB1gQAvD_BwE)
-
-- [Bee 915 mHz](https://www.robotshop.com/en/lora-long-range-transceiver-bee-915-mhz-north-america.html?gclid=CjwKCAjwmeiIBhA6EiwA-uaeFfkaDhgtk7X5_3AxLc1Eg68OUACRhryJytIejzb7jUnLZhEAyU2b2xoCqNQQAvD_BwE)
-
-- Integrated Heltec CubeCell LoRa
-
-### 9. [Adafruit 6V 3.5W Solar Panel](https://www.adafruit.com/product/500)
+### 7. [Adafruit 6V 3.5W Solar Panel](https://www.adafruit.com/product/500)
 
 - [Solar Panel Technical Drawing](https://github.com/VoltaicEngineering/Solar-Panel-Drawings/blob/master/Voltaic%20Systems%203.5W%206V%20113x210mm%20DRAWING%20CURRENT%202017%207%2020.pdf)
 
