@@ -3,97 +3,78 @@ import pandas as pd
 import matplotlib.pyplot as plt
 import matplotlib.animation as animation
 import yagmail
-alert_already = 0
+from matplotlib.widgets import Slider, Button
+import matplotlib as mpl
+import numpy as np
+import datetime as dt
+
+legend = plt.legend()
+
 def animate(i):
     with urllib.request.urlopen("http://52.26.55.255:8080/api/v0p1/sensor_by_id/Ursula_2") as url:
         data = json.loads(url.read().decode())
     df = pd.DataFrame.from_records(data)
 
+    year = (dt.datetime.now() + dt.timedelta(days = 1)).year
+    month = (dt.datetime.now() + dt.timedelta(days = 1)).month
+    day = (dt.datetime.now() + dt.timedelta(days = 1)).day
+    hour = (dt.datetime.now() + dt.timedelta(days = 1)).hour
+
     fluorescence = df[df['measurement_name'] == 'fluorescence']
-    fluortimes = fluorescence['receipt_time'].tolist()
+    fluortimes = pd.to_datetime(fluorescence['timestamp']).tolist()
     fluorvals = fluorescence['value'].tolist()
 
     redturb1 = df[df['measurement_name'] == 'redturbidity']
-    redturb1times = redturb1['receipt_time'].tolist()
+    redturb1times = pd.to_datetime(redturb1['timestamp']).tolist()
     redturb1vals = redturb1['value'].tolist()
 
     redturb2 = df[df['measurement_name'] == 'redturbidity2']
-    redturb2times = redturb2['receipt_time'].tolist()
+    redturb2times = pd.to_datetime(redturb2['timestamp']).tolist()
     redturb2vals = redturb2['value'].tolist()
 
     greenturb1 = df[df['measurement_name'] == 'greenturbidity']
-    greenturb1times = greenturb1['receipt_time'].tolist()
+    greenturb1times = pd.to_datetime(greenturb1['timestamp']).tolist()
     greenturb1vals = greenturb1['value'].tolist()
 
     greenturb2 = df[df['measurement_name'] == 'greenturbidity2']
-    greenturb2times = greenturb2['receipt_time'].tolist()
+    greenturb2times = pd.to_datetime(greenturb2['timestamp']).tolist()
     greenturb2vals = greenturb2['value'].tolist()
 
     blueturb1 = df[df['measurement_name'] == 'blueturbidity']
-    blueturb1times = blueturb1['receipt_time'].tolist()
+    blueturb1times = pd.to_datetime(blueturb1['timestamp']).tolist()
     blueturb1vals = blueturb1['value'].tolist()
 
     blueturb2 = df[df['measurement_name'] == 'blueturbidity2']
-    blueturb2times = blueturb2['receipt_time'].tolist()
+    blueturb2times = pd.to_datetime(blueturb2['timestamp']).tolist()
     blueturb2vals = blueturb2['value'].tolist()
 
     temperature = df[df['measurement_name'] == 'temperature']
-    temperaturetimes = temperature['receipt_time'].tolist()
+    temperaturetimes = pd.to_datetime(temperature['timestamp']).tolist()
     temperaturevals = temperature['value'].tolist()
 
     pH = df[df['measurement_name'] == 'pH']
-    pHtimes = pH['receipt_time'].tolist()
+    pHtimes = pd.to_datetime(pH['timestamp']).tolist()
     pHvals = pH['value'].tolist()
 
-    ax1.clear()
-    ax1.plot(fluortimes, fluorvals, label = "Fluorometer Data")
-    ax1.legend()
+    plt.scatter(fluortimes, fluorvals, color='y', label="Fluorometer Voltage")
+    plt.scatter(redturb1times, redturb1vals, color='r', label="Red Turb 1")
+    plt.scatter(greenturb1times, greenturb1vals, color='g', label="Green Turb 1")
+    plt.scatter(blueturb1times, blueturb1vals, color='b', label="Blue Turb 1")
 
-    ax2.clear()
-    ax2.plot(redturb1times, redturb1vals, label = "Red Turb 1 Data")
-    ax2.legend()
+    # plt.scatter(temperaturetimes, temperaturevals, color='k')
+    # plt.scatter(pHtimes, pHvals, color='c')
+    plt.legend(loc="upper right")
 
-    ax3.clear()
-    ax3.plot(redturb2times, redturb2vals, label = "Red Turb 2 Data")
-    ax3.legend()
+    plt.axis([dt.date(2021, 11, 7), dt.date(year, month, day), None, None])
 
-    ax4.clear()
-    ax4.plot(greenturb1times, greenturb1vals, label = "Green Turb 1 Data")
-    ax4.legend()
+    # plt.plot(redturb2times, redturb2vals, color=cmap(50))
+    # plt.plot(greenturb2times, greenturb2vals, color=cmap(50))
+    # plt.plot(blueturb2times, blueturb2vals, color=cmap(50))
 
-    ax5.clear()
-    ax5.plot(greenturb2times, greenturb2vals, label = "Green Turb 2 Data")
-    ax5.legend()
-
-    ax6.clear()
-    ax6.plot(blueturb1times, blueturb1vals, label = "Blue Turb 1 Data")
-    ax6.legend()
-
-    ax7.clear()
-    ax7.plot(blueturb2times, blueturb2vals, label = "Blue Turb 2 Data")
-    ax7.legend()
-
-    # ax8.clear()
-    # ax8.plot(blueturb2times, blueturb2vals, label = "Blue Turb 2 Data")
-    # ax8.legend()
-
-    # ax1.plot()
-    # if fluorvals[-1] > 1.0: # and alert_already == 0:
-    #     yag = yagmail.SMTP('ahorvath1994@gmail.com', 'password')
-    #     contents = ['Fluorometer value was found to be',
-    #                 fluorvals[-1]]
-    #     yag.send('alexander.horvath@ama-inc.com', 'Fluorometer Alert', contents)
-    #     # alert_already = 1
+    print("Fluorometer Val: " + str(fluorvals[-1]) + " Red Turb 1: " + str(redturb1vals[-1]) + " Green Turb 1: " + str(greenturb1vals[-1])
+          + " Blue Turb 1: " + str(blueturb1vals[-1]) + " Red Turb 2: " + str(redturb2vals[-1]) + " Green Turb 2: " + str(greenturb2vals[-1])
+          + " Blue Turb 2: " + str(blueturb2vals[-1]) + " Water Temp: " + str(temperaturevals[-1]) + " pH: " + str(pHvals[-1]))
 
 fig = plt.figure()
-ax1 = fig.add_subplot(1,8,1)
-ax2 = fig.add_subplot(1,8,2)
-ax3 = fig.add_subplot(1,8,3)
-ax4 = fig.add_subplot(1,8,4)
-ax5 = fig.add_subplot(1,8,5)
-ax6 = fig.add_subplot(1,8,6)
-ax7 = fig.add_subplot(1,8,7)
-ax8 = fig.add_subplot(1,8,8)
-
-ani = animation.FuncAnimation(fig, animate, interval=10000)
+ani = animation.FuncAnimation(fig, animate, interval=60000)
 plt.show()
