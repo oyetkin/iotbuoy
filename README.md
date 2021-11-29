@@ -15,9 +15,7 @@ Designed by [Analytical Mechanics Associates](https://www.ama-inc.com/) and the 
 
 - [ELEGOO MEGA R3 (cheaper)](https://www.amazon.com/ELEGOO-ATmega2560-ATMEGA16U2-Arduino-Compliant/dp/B01H4ZDYCE/ref=asc_df_B01H4ZDYCE/?tag=hyprod-20&linkCode=df0&hvadid=309751315916&hvpos=&hvnetw=g&hvrand=11900577637582741809&hvpone=&hvptwo=&hvqmt=&hvdev=c&hvdvcmdl=&hvlocint=&hvlocphy=9008124&hvtargid=pla-493625544636&psc=1&tag=&ref=&adgrpid=67183599252&hvpone=&hvptwo=&hvadid=309751315916&hvpos=&hvnetw=g&hvrand=11900577637582741809&hvqmt=&hvdev=c&hvdvcmdl=&hvlocint=&hvlocphy=9008124&hvtargid=pla-493625544636)
 
-### 2. [Adafruit Boost Converter](https://www.adafruit.com/product/4654?gclid=EAIaIQobChMI0a7O6eH38QIVCWxvBB0nXAA6EAQYASABEgIBAvD_BwE)
-
-- [Boost Converter Chip (TPS 61023) Data Sheets](https://www.ti.com/product/TPS61023)
+### 2. [Adafruit Boost Converter](https://www.amazon.com/Module-Output-Voltage-Converter-Regulator/dp/B08NCM9ZPQ/ref=pd_lpo_2?pd_rd_i=B08NCM9ZPQ&th=1)
 
 ### 3. [SIM 808 GPRS/GSM Shield](https://www.robotshop.com/en/sim808-gps-gprsgsm-arduino-shield-mkf.html)
 
