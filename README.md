@@ -7,7 +7,7 @@ Lake Erie Algae Bloom 2019, (Image credit NOAA)
 An open source, low-cost envirnmental buoy designed to monitor the health of lakes, rivers, estuaries and tidal regions with particular emphasis on algae blooms.
 Designed by [Analytical Mechanics Associates](https://www.ama-inc.com/) and the [Virginia Modeling, Analysis & Simulation Center (VMASC)](https://www.odu.edu/vmasc). This project is compatible with the [Open Data Cube](https://www.opendatacube.org/), which is an open-source platform that can ingest data from a variety of sensors and has the goal of making environmental monitoring simple and highly accessible. 
 
-# Hardware required
+# Buoy Specific Hardware Required
 
 ### 1. Arduino MEGA or ELEGOO MEGA
 
@@ -54,18 +54,51 @@ Designed by [Analytical Mechanics Associates](https://www.ama-inc.com/) and the 
 ### 13. [1 x 5V Relay](https://www.amazon.com/dp/B00LW15A4W/ref=sspa_dk_detail_1?psc=1&pd_rd_i=B00LW15A4W&pd_rd_w=aOwYS&pf_rd_p=887084a2-5c34-4113-a4f8-b7947847c308&pd_rd_wg=d9OYw&pf_rd_r=2T88CXQQATMBQ5GCT5P3&pd_rd_r=3e0135cb-89a8-48af-9e94-0d640f9c0973&spLa=ZW5jcnlwdGVkUXVhbGlmaWVyPUFDTlpFWDJKQjc1U04mZW5jcnlwdGVkSWQ9QTA4Mjc2MTYzQVJSVUhUQzg2RFlLJmVuY3J5cHRlZEFkSWQ9QTAwNzIwMDAzMFYxS09RSEVZQ0ZVJndpZGdldE5hbWU9c3BfZGV0YWlsJmFjdGlvbj1jbGlja1JlZGlyZWN0JmRvTm90TG9nQ2xpY2s9dHJ1ZQ==)
 
 ### 14. Housing
-- Buoy with CAD files provided
+- Buoy with CAD files provided [here](https://github.com/oyetkin/iotbuoy/tree/main/CAD_Files)
 
 - Waterproof box
 
 - Your own design
 
-
 # Fluorometer Design
+
+### 1. [1 x 395 nm LED](https://www.mouser.com/ProductDetail/BIVAR/UV5TZ-390-15?qs=sGAEpiMZZMtaWn5d0uiAD8cVjFdgDZGx%2FUxBqCDWrPM%3D)
+
+### 2. [FDS 100 Photodiode](https://www.thorlabs.us/thorproduct.cfm?partnumber=FDS100)
+
+### 3. [550 nm Cut On Long Pass Filter](https://www.newport.com/p/10CGA-550)
+
+### 4. [Jewler's Resin](https://www.amazon.com/16OZ-Epoxy-Resin-Graduated-Instructions/dp/B0839GN3PF/ref=sr_1_5?keywords=clear%2Bepoxy%2Bresin&qid=1638217693&qsid=146-2373950-0512811&s=arts-crafts&sr=1-5&sres=B08233BV5W%2CB08HN2XCDS%2CB0839GN3PF%2CB098918WFB%2CB084PZG6HK%2CB07S1MLQMJ%2CB084Q87Y8M%2CB07YCVVYFK%2CB099XFL1PK%2CB086L1CDMT%2CB07G5HY79C%2CB07JBKDQZJ%2CB07JB5P76Z%2CB089XZJFG5%2CB097JLGFZF%2CB07QF2XYYX%2CB092HX7SQT%2CB08PF576QC%2CB0823LC5H1%2CB08XQ2S1VQ&th=1)
+
+### 5. [Black ABS Filament (will be useful for turbidity sensor as well)](https://www.amazon.com/HATCHBOX-3D-Filament-Dimensional-Accuracy/dp/B00J0H8EWA/ref=sr_1_3?crid=HBAP4Q1YHOWB&keywords=black%2Babs%2Bfilament%2B1.75%2B1kg&qid=1638217775&qsid=146-2373950-0512811&sprefix=black%2Babs%2Bfila%2Carts-crafts%2C167&sr=8-3&sres=B00J0H8EWA%2CB07XF5KM74%2CB07T2QZSLY%2CB01M6Y2QF1%2CB00MV7T25E%2CB07199449V%2CB00WX4UONO%2CB0919Q91MN%2CB015VGJGPW%2CB00F9MNMAY%2CB018F586ES%2CB08N4MMK6V%2CB089NPTH2W%2CB09H7RKL95%2CB07GFXYVLR%2CB08BR7YCY1&srpt=THERMOPLASTIC_FILAMENT&th=1)
 
 # Turbidity Sensor Design
 
-### 15. Application Specific Sensors
+### 1. [2 x Photoresistors](https://www.amazon.com/gp/product/B01N7V536K/ref=ppx_yo_dt_b_search_asin_image?ie=UTF8&psc=1)
+
+### 2. [1 x RGB LED](https://www.amazon.com/gp/product/B077XGF3YR/ref=ppx_yo_dt_b_search_asin_title?ie=UTF8&th=1)
+
+### 3. [Jewler's Resin](https://www.amazon.com/16OZ-Epoxy-Resin-Graduated-Instructions/dp/B0839GN3PF/ref=sr_1_5?keywords=clear%2Bepoxy%2Bresin&qid=1638217693&qsid=146-2373950-0512811&s=arts-crafts&sr=1-5&sres=B08233BV5W%2CB08HN2XCDS%2CB0839GN3PF%2CB098918WFB%2CB084PZG6HK%2CB07S1MLQMJ%2CB084Q87Y8M%2CB07YCVVYFK%2CB099XFL1PK%2CB086L1CDMT%2CB07G5HY79C%2CB07JBKDQZJ%2CB07JB5P76Z%2CB089XZJFG5%2CB097JLGFZF%2CB07QF2XYYX%2CB092HX7SQT%2CB08PF576QC%2CB0823LC5H1%2CB08XQ2S1VQ&th=1)
+
+
+### 4. [Black ABS Filament (will be useful for turbidity sensor as well)](https://www.amazon.com/HATCHBOX-3D-Filament-Dimensional-Accuracy/dp/B00J0H8EWA/ref=sr_1_3?crid=HBAP4Q1YHOWB&keywords=black%2Babs%2Bfilament%2B1.75%2B1kg&qid=1638217775&qsid=146-2373950-0512811&sprefix=black%2Babs%2Bfila%2Carts-crafts%2C167&sr=8-3&sres=B00J0H8EWA%2CB07XF5KM74%2CB07T2QZSLY%2CB01M6Y2QF1%2CB00MV7T25E%2CB07199449V%2CB00WX4UONO%2CB0919Q91MN%2CB015VGJGPW%2CB00F9MNMAY%2CB018F586ES%2CB08N4MMK6V%2CB089NPTH2W%2CB09H7RKL95%2CB07GFXYVLR%2CB08BR7YCY1&srpt=THERMOPLASTIC_FILAMENT&th=1)
+
+# Other Items Required
+
+- Zip Ties
+- SLA Resin
+- SD Card
+- Jumper wires
+- Header pins
+- Solder
+- Soldering iron
+- Wire strippers
+- Heat shrink tubing
+- DP 100 epoxy
+- Rope/anchor OR Rope/mooring OR free-floating
+
+
+# Other Interesting Sensors
 
 - [BME 280 Temperature, Pressure and Humidity Sensor](https://www.adafruit.com/product/2652?gclid=CjwKCAjwmeiIBhA6EiwA-uaeFSZ-NF_fIGoMKItD13WAFwLuqSzOlsIt3QiFYIm7f4G2JHgIPPHd5BoCa6EQAvD_BwE)
 
@@ -95,25 +128,6 @@ OR
 
 - [Vernier Sensors](https://www.vernier.com/product-category/?category=sensors&page_num=1)
 
-### 16. Miscellaneous
-
-- Zip Ties
-- SLA Resin
-- SD Card
-- Jumper wires
-- Header pins
-- Solder
-- Soldering iron
-- Wire strippers
-- Heat shrink tubing
-- DP 100 epoxy
-- 1/8 inch thick plexiglass cover
-- [Wide Angle Amber LEDs](https://lighthouseleds.com/3mm-diffused-flat-top-led-amber-orange-ultra-bright.html?gclid=CjwKCAjwmeiIBhA6EiwA-uaeFbw4fVEH2iwfen9D4Wmm7OOYcc3WVievBPmKvrvILAAn2A_0q_WB3RoCfAoQAvD_BwE)
-- Rope/anchor OR Rope/mooring OR free-floating
-
-- [I2C Overview](https://learn.adafruit.com/i2c-addresses)
-
-- [Non-Exhaustive List of I2C Sensors and Addresses](https://learn.adafruit.com/i2c-addresses/the-list)
 
 ### Harmful Algae Bloom Information
 
