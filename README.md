@@ -13,21 +13,15 @@ Designed by [Analytical Mechanics Associates](https://www.ama-inc.com/) and the 
 
 - [Arduino MEGA R3](https://store.arduino.cc/usa/mega-2560-r3)
 
-- [ELEGOO MEGA R3](https://www.amazon.com/ELEGOO-ATmega2560-ATMEGA16U2-Arduino-Compliant/dp/B01H4ZDYCE/ref=asc_df_B01H4ZDYCE/?tag=hyprod-20&linkCode=df0&hvadid=309751315916&hvpos=&hvnetw=g&hvrand=11900577637582741809&hvpone=&hvptwo=&hvqmt=&hvdev=c&hvdvcmdl=&hvlocint=&hvlocphy=9008124&hvtargid=pla-493625544636&psc=1&tag=&ref=&adgrpid=67183599252&hvpone=&hvptwo=&hvadid=309751315916&hvpos=&hvnetw=g&hvrand=11900577637582741809&hvqmt=&hvdev=c&hvdvcmdl=&hvlocint=&hvlocphy=9008124&hvtargid=pla-493625544636)
+- [ELEGOO MEGA R3 (cheaper)](https://www.amazon.com/ELEGOO-ATmega2560-ATMEGA16U2-Arduino-Compliant/dp/B01H4ZDYCE/ref=asc_df_B01H4ZDYCE/?tag=hyprod-20&linkCode=df0&hvadid=309751315916&hvpos=&hvnetw=g&hvrand=11900577637582741809&hvpone=&hvptwo=&hvqmt=&hvdev=c&hvdvcmdl=&hvlocint=&hvlocphy=9008124&hvtargid=pla-493625544636&psc=1&tag=&ref=&adgrpid=67183599252&hvpone=&hvptwo=&hvadid=309751315916&hvpos=&hvnetw=g&hvrand=11900577637582741809&hvqmt=&hvdev=c&hvdvcmdl=&hvlocint=&hvlocphy=9008124&hvtargid=pla-493625544636)
 
 ### 2. [Adafruit Boost Converter](https://www.adafruit.com/product/4654?gclid=EAIaIQobChMI0a7O6eH38QIVCWxvBB0nXAA6EAQYASABEgIBAvD_BwE)
 
 - [Boost Converter Chip (TPS 61023) Data Sheets](https://www.ti.com/product/TPS61023)
 
-### 3. [SIM 800 GPRS/GSM Shield](https://www.tinyosshop.com/sim800f-arduino-shield)
+### 3. [SIM 808 GPRS/GSM Shield](https://www.robotshop.com/en/sim808-gps-gprsgsm-arduino-shield-mkf.html)
 
-### 4. [Adafruit Universal BQ24047 Charger](https://www.adafruit.com/product/4755)
-
-- [BQ24074 Data Sheet](https://www.ti.com/product/BQ24074)
-
-- [BQ24074 Fritzing Obbject](https://github.com/adafruit/Fritzing-Library/blob/master/parts/Adafruit%20BQ24074%20Solar-DC-USB%20Lipo%20Charger.fzpz)
-
-- [Adafruit BQ24074 Design Notes](https://learn.adafruit.com/adafruit-bq24074-universal-usb-dc-solar-charger-breakout/design-notes)
+### 4. [Adafruit Solar Charger](https://www.adafruit.com/product/390?gclid=Cj0KCQiAkZKNBhDiARIsAPsk0Wjwwub03ZPgBxlKg1lHWn5nn0opyzVy_Q3VPSugYz3q11KsZ251EOcaAhBzEALw_wcB)
 
 ### 5. [Adafruit Data Logging Shield](https://www.adafruit.com/product/1141?gclid=EAIaIQobChMI9OqQ1tr58QIVzXxvBB3GTgbGEAQYASABEgITQvD_BwE)
 
@@ -53,16 +47,27 @@ Designed by [Analytical Mechanics Associates](https://www.ama-inc.com/) and the 
 
 - [Solar Panel Technical Drawing](https://github.com/VoltaicEngineering/Solar-Panel-Drawings/blob/master/Voltaic%20Systems%203.5W%206V%20113x210mm%20DRAWING%20CURRENT%202017%207%2020.pdf)
 
-### 10. [2000 mAh 3.7V Lithium Ion Battery](https://www.adafruit.com/product/2011?gclid=Cj0KCQjwub-HBhCyARIsAPctr7z8nLmCm4o8cagw8cGOR2JvBQQupAMMokKOfB4LIsXs9-Lr6N-EV6MaAgagEALw_wcB)
+### 10. [6600 mAh 3.7V Lithium Ion Battery](https://www.adafruit.com/product/353)
 
-### 11. Housing
+### 11. [Adafruit TPL5110 Breakout Board](https://www.adafruit.com/product/3435)
+
+### 12. [2 x Logic Level MOSFETs](https://www.adafruit.com/product/355?gclid=Cj0KCQiAkZKNBhDiARIsAPsk0WjnNOXiQNRGiAEgli75LM5E2M7oeG2U099ojSzUixjhvhauOlB4FwMaAmLGEALw_wcB)
+
+### 13. [1 x 5V Relay](https://www.amazon.com/dp/B00LW15A4W/ref=sspa_dk_detail_1?psc=1&pd_rd_i=B00LW15A4W&pd_rd_w=aOwYS&pf_rd_p=887084a2-5c34-4113-a4f8-b7947847c308&pd_rd_wg=d9OYw&pf_rd_r=2T88CXQQATMBQ5GCT5P3&pd_rd_r=3e0135cb-89a8-48af-9e94-0d640f9c0973&spLa=ZW5jcnlwdGVkUXVhbGlmaWVyPUFDTlpFWDJKQjc1U04mZW5jcnlwdGVkSWQ9QTA4Mjc2MTYzQVJSVUhUQzg2RFlLJmVuY3J5cHRlZEFkSWQ9QTAwNzIwMDAzMFYxS09RSEVZQ0ZVJndpZGdldE5hbWU9c3BfZGV0YWlsJmFjdGlvbj1jbGlja1JlZGlyZWN0JmRvTm90TG9nQ2xpY2s9dHJ1ZQ==)
+
+### 14. Housing
 - Buoy with CAD files provided
 
 - Waterproof box
 
 - Your own design
 
-### 12. Application Specific Sensors
+
+# Fluorometer Design
+
+# Turbidity Sensor Design
+
+### 15. Application Specific Sensors
 
 - [BME 280 Temperature, Pressure and Humidity Sensor](https://www.adafruit.com/product/2652?gclid=CjwKCAjwmeiIBhA6EiwA-uaeFSZ-NF_fIGoMKItD13WAFwLuqSzOlsIt3QiFYIm7f4G2JHgIPPHd5BoCa6EQAvD_BwE)
 
@@ -92,7 +97,7 @@ OR
 
 - [Vernier Sensors](https://www.vernier.com/product-category/?category=sensors&page_num=1)
 
-### 13. Miscellaneous
+### 16. Miscellaneous
 
 - Zip Ties
 - SLA Resin
