@@ -121,7 +121,7 @@ void setup() {
 
   updateSerial();
 
-  Serial1.println("AT+SAPBR=3,1,Contype,GPRS"); // Set connection type to LTE
+  Serial1.println("AT+SAPBR=3,1,Contype,LTE"); // Set connection type to LTE
 
   delay(3000);
 
