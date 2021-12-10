@@ -18,6 +18,8 @@
 #include <SD.h>
 #include <Adafruit_ADS1X15.h>
 
+#define DONEPIN  12 // Set the pin to send the done signal to the TPL5110 watchdog
+
 //Create software serial object to communicate with SIM808. Pin 7 is RX on GPRS/GPS/GSM shield and pin 8 is TX for the robotshop GPS/GPRS/GSM shield here
 // https://www.robotshop.com/en/sim808-gps-gprsgsm-arduino-shield-mkf.html?gclid=EAIaIQobChMIl-Hpytn58QIVdGxvBB3DMgZVEAQYDSABEgJUg_D_BwE
 // If you are using a different GSM/GPS/GPRS module, use the RX/TX pins given in the board specification.
@@ -49,10 +51,11 @@ const int LDR1ADS = 0;
 const int LDR2ADS = 1;
 const int FluorADS = 2;
 const int WaterTempADS = 3;
-const int BattStartPin = 10; 
-const int BattReadPin = A0;
+const int BattStartPin = 13; 
+const int BattStartPin2 = 11; 
+const int BattReadPin = 10;
 
-//pinMode(ActivepH, OUTPUT);
+
 
 const int NumSamples = 5; // How many samples do you want each sensor to take
 float samples = 0; // This object collects a sum of each sample data, which is then divided by the number of samples to get the average.
@@ -110,138 +113,6 @@ Measurement pH = {0, 0.01, "pH", "pH", 0, 14, "pHProbe"};
 Measurement waterTemp = {0, 0.01, "Celsius", "temperature", 0, 100, "Thermistor"};
 Measurement fluorescence = {0, 0.01, "Relative %", "fluorescence", 0, 100, "Fluorometer"};
 Measurement voltmsr = {0, 0.01, "Volts", "voltage", 0, 100, "Volt Meter"};
-
-void setup()
-{
-  //
-  if (! rtc.begin()) { // Flush serial, this is necessary for the program to work
-    Serial.flush();
-    abort();
-  }
-  rtc.start();
-  rtc.adjust(DateTime(F(__DATE__), F(__TIME__)));
-  Serial.begin(57600); //Begin serial communication with Arduino and Arduino IDE (Serial Monitor)
-
-  Serial1.begin(57600); //Begin serial communication with Arduino and SIM808
-
-  delay(100);
-
-}
-
-
-void Initialize()
-{
-  ads.begin();
-
-  bme.begin(); // Initialize the BME 280
-
-  Serial1.println("AT"); //Once the handshake test is successful, it will back to OK
-
-  updateSerial(); // Return the response to the serial port for display purposes, and print anything from either serial or SoftwareSerial. May be able to remove in actual deployment pending testing
-
-  Serial1.println("AT+CSQ"); //Signal quality test, value range is 0-31 , 31 is the best
-
-  delay(3000);
-
-  updateSerial();
-
-  Serial1.println("AT+CCID"); //Read SIM information to confirm whether the SIM is plugged in
-
-  delay(1000);
-
-  updateSerial();
-
-  Serial1.println("AT+CREG?"); //Check whether it has registered in the network
-
-  delay(1000);
-
-  updateSerial();
-
-  Serial1.println("AT+CGREG?"); // Check to see if the device is registered again
-
-  delay(1000);
-
-  updateSerial();
-
-  Serial1.println("AT+COPS?"); // Returns the mobile network name i.e. T-mobile
-
-  delay(1000);
-
-  updateSerial();
-
-  Serial1.println("AT+cgatt=1");
-
-  delay(1000);
-
-  updateSerial();
-
-  Serial1.println("AT+CMGF=1"); // Set to SMS text mode
-
-  delay(3000);
-
-  updateSerial();
-
-  Serial1.println("AT+SAPBR=3,1,Contype,GPRS"); // Set connection type to GPRS
-
-  delay(3000);
-
-  updateSerial();
-
-  Serial1.println("AT+SAPBR=3,1,APN,TM"); // Change "TM" to the APN provided by your carrier
-
-  delay(3000);
-
-  updateSerial();
-
-  Serial1.println("AT+CGACT=1,1"); // Perform GPRS attach, which must occur befpre PDP context can be established
-
-  delay(3000);
-
-  updateSerial();
-
-  Serial1.println("AT+SAPBR=1,1"); // Enable bearer 1
-
-  delay(3000);
-
-  updateSerial();
-
-  Serial1.println("AT+SAPBR=2,1"); // Check whether bearer 1 is open
-
-  delay(3000);
-
-  updateSerial();
-
-  Serial1.println("AT+HTTPINIT"); // Initialize HTTP service
-
-  delay(3000);
-
-  updateSerial();
-
-  Serial1.println("AT+HTTPPARA=CID,1"); // Set bearer profile ID
-
-  delay(3000);
-
-  updateSerial();
-
-  Serial1.println("AT+HTTPPARA=URL,http://52.26.55.255:8080/api/v0p1/sensor"); // Server address
-
-  delay(3000);
-
-  updateSerial();
-
-  Serial1.println("AT+HTTPPARA=\"CONTENT\",\"application/json\"");
-
-  delay(3000);
-
-  updateSerial();
-
-  //  if (!SD.begin()) {
-  //    while (1);
-  //  }
-  //  if (SD.exists("data.txt")){
-  //  SD.remove("data.txt");
-  //  }
-}
 
 void updateSerial()
 {
@@ -464,18 +335,22 @@ float readFluorescence()
 
 float readBatt()
 {
+  pinMode(BattStartPin, OUTPUT);
+  pinMode(BattStartPin2, OUTPUT);
   digitalWrite(BattStartPin, HIGH); // Turn on battery check pin
+  digitalWrite(BattStartPin2, HIGH); // Turn on battery check pin
   float n=5.0;  // number of iterations to perform
   float sum=0.0;  //store sum as a 32-bit number
   for(int i=0;i<n;i++)
   {
-    float value = analogRead(BattReadPin);
+    float value = digitalRead(BattReadPin);
     sum = sum + value;
     delay(1);
   }
-  float avg = sum/n;   //store average as a 32-bit number with decimal accuracy
+  float BattVoltage = sum/n;   //store average as a 32-bit number with decimal accuracy
   digitalWrite(BattStartPin, LOW); // Turn off batt monitoring
-  float BattVoltage = 5*avg/1023;
+  digitalWrite(BattStartPin2, LOW); // Turn off batt monitoring
+//  float BattVoltage = 5*avg/1023;
   return BattVoltage;
 }
 
@@ -533,9 +408,125 @@ int SetGain(int ADS1115Pin) {
   }
 }
 
-void loop()
+
+void setup()
 {
-  Initialize();
+  //
+  if (! rtc.begin()) { // Flush serial, this is necessary for the program to work
+    Serial.flush();
+    abort();
+  }
+  rtc.start();
+  rtc.adjust(DateTime(F(__DATE__), F(__TIME__)));
+  Serial.begin(57600); //Begin serial communication with Arduino and Arduino IDE (Serial Monitor)
+
+  Serial1.begin(57600); //Begin serial communication with Arduino and SIM808
+
+  delay(100);
+
+  ads.begin();
+
+  bme.begin(); // Initialize the BME 280
+
+  Serial1.println("AT"); //Once the handshake test is successful, it will back to OK
+
+  updateSerial(); // Return the response to the serial port for display purposes, and print anything from either serial or SoftwareSerial. May be able to remove in actual deployment pending testing
+
+  Serial1.println("AT+CSQ"); //Signal quality test, value range is 0-31 , 31 is the best
+
+  delay(3000);
+
+  updateSerial();
+
+  Serial1.println("AT+CCID"); //Read SIM information to confirm whether the SIM is plugged in
+
+  delay(1000);
+
+  updateSerial();
+
+  Serial1.println("AT+CREG?"); //Check whether it has registered in the network
+
+  delay(1000);
+
+  updateSerial();
+
+  Serial1.println("AT+CGREG?"); // Check to see if the device is registered again
+
+  delay(1000);
+
+  updateSerial();
+
+  Serial1.println("AT+COPS?"); // Returns the mobile network name i.e. T-mobile
+
+  delay(1000);
+
+  updateSerial();
+
+  Serial1.println("AT+cgatt=1");
+
+  delay(1000);
+
+  updateSerial();
+
+  Serial1.println("AT+CMGF=1"); // Set to SMS text mode
+
+  delay(3000);
+
+  updateSerial();
+
+  Serial1.println("AT+SAPBR=3,1,Contype,GPRS"); // Set connection type to GPRS
+
+  delay(3000);
+
+  updateSerial();
+
+  Serial1.println("AT+SAPBR=3,1,APN,TM"); // Change "TM" to the APN provided by your carrier
+
+  delay(3000);
+
+  updateSerial();
+
+  Serial1.println("AT+CGACT=1,1"); // Perform GPRS attach, which must occur befpre PDP context can be established
+
+  delay(3000);
+
+  updateSerial();
+
+  Serial1.println("AT+SAPBR=1,1"); // Enable bearer 1
+
+  delay(3000);
+
+  updateSerial();
+
+  Serial1.println("AT+SAPBR=2,1"); // Check whether bearer 1 is open
+
+  delay(3000);
+
+  updateSerial();
+
+  Serial1.println("AT+HTTPINIT"); // Initialize HTTP service
+
+  delay(3000);
+
+  updateSerial();
+
+  Serial1.println("AT+HTTPPARA=CID,1"); // Set bearer profile ID
+
+  delay(3000);
+
+  updateSerial();
+
+  Serial1.println("AT+HTTPPARA=URL,http://52.26.55.255:8080/api/v0p1/sensor"); // Server address
+
+  delay(3000);
+
+  updateSerial();
+
+  Serial1.println("AT+HTTPPARA=\"CONTENT\",\"application/json\"");
+
+  delay(3000);
+
+  updateSerial();
 
   delay(1000);
 
@@ -598,4 +589,12 @@ void loop()
   delay(1000);
 
   UplinkData(fluorescence, readFluorescence());
+
+  delay(4000);
+
+  digitalWrite(DONEPIN, HIGH);
+}
+
+void loop(){
+  
 }
