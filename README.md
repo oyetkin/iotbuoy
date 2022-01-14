@@ -9,7 +9,7 @@ Designed by [Analytical Mechanics Associates](https://www.ama-inc.com/) and the 
 
 # Building your Buoy - Buoy Specific Hardware Required
 
-### 1. Arduino MEGA or ELEGOO MEGA
+### 1. [Arduino MEGA or ELEGOO MEGA](https://www.amazon.com/ELEGOO-ATmega2560-ATMEGA16U2-Arduino-Compliant/dp/B01H4ZDYCE/ref=asc_df_B01H4ZDYCE/?tag=hyprod-20&linkCode=df0&hvadid=309751315916&hvpos=&hvnetw=g&hvrand=11900577637582741809&hvpone=&hvptwo=&hvqmt=&hvdev=c&hvdvcmdl=&hvlocint=&hvlocphy=9008124&hvtargid=pla-493625544636&psc=1&tag=&ref=&adgrpid=67183599252&hvpone=&hvptwo=&hvadid=309751315916&hvpos=&hvnetw=g&hvrand=11900577637582741809&hvqmt=&hvdev=c&hvdvcmdl=&hvlocint=&hvlocphy=9008124&hvtargid=pla-493625544636)
 
 - [Arduino MEGA R3](https://store.arduino.cc/usa/mega-2560-r3)
 
@@ -48,6 +48,8 @@ Designed by [Analytical Mechanics Associates](https://www.ama-inc.com/) and the 
 ### 10. [6600 mAh 3.7V Lithium Ion Battery](https://www.adafruit.com/product/353)
 
 ### 11. [Adafruit TPL5110 Breakout Board](https://www.adafruit.com/product/3435)
+
+### 12. [Adafruit Power Boost 1000 Breakout Board](https://www.adafruit.com/product/2465?gclid=CjwKCAiA24SPBhB0EiwAjBgkhrGJI_mgLnF6EL7C2EgxJwRfddbmznOh6DxHYULQIVquQbLt4znxhRoCKecQAvD_BwE)
 
 ### 12. Housing
 - Buoy with CAD files provided [here](https://github.com/oyetkin/iotbuoy/tree/main/CAD_Files)
@@ -102,29 +104,20 @@ Designed by [Analytical Mechanics Associates](https://www.ama-inc.com/) and the 
 
 - [Waterproof Thermistor](https://www.adafruit.com/product/372)
 
-- [Dissolved Oxygen Sensor](https://www.vernier.com/product/go-direct-optical-dissolved-oxygen-probe/)
-OR
-- [Dissolved Oxygen Sensor](https://atlas-scientific.com/mini-d-o-probe/)
-
 - [pH Sensor - BaiBiinoom](https://www.amazon.com/dp/B08T14MHYM/ref=sspa_dk_detail_5?psc=1&pd_rd_i=B08T14MHYM&pd_rd_w=985e5&pf_rd_p=887084a2-5c34-4113-a4f8-b7947847c308&pd_rd_wg=uMPfo&pf_rd_r=P2YGNQ6FN71QT09KWQ5C&pd_rd_r=686f8153-25fd-4026-99d0-7fb76ffa969c&spLa=ZW5jcnlwdGVkUXVhbGlmaWVyPUExOUZRSlJLT0NGOFg1JmVuY3J5cHRlZElkPUEwMDczNzQyMktISUpDUU1BMDlINyZlbmNyeXB0ZWRBZElkPUEwOTQ1MDQxM0dNN0RCVURDSUsxNiZ3aWRnZXROYW1lPXNwX2RldGFpbCZhY3Rpb249Y2xpY2tSZWRpcmVjdCZkb05vdExvZ0NsaWNrPXRydWU=)
 OR
 - [pH Sensor - TEKCOPLUS](https://www.amazon.com/Replacement-Electrode-Connector-Controller-Hydroponics/dp/B09681C36B/ref=sr_1_19?dchild=1&keywords=ph+meter+electrode&qid=1629149917&sr=8-19)
 OR
 - [pH Sensor - Vernier](https://www.vernier.com/product/ph-sensor/)
 
-- [Low Cost 3D Printed Optical Density Sensor (CAD Files to be added)]
-
-- [Conductivity Sensor](https://www.vernier.com/product/go-direct-conductivity-probe/)
-
 - [Turbidity Sensor](https://www.digikey.com/en/products/detail/amphenol-advanced-sensors/TSD-10/4767843?utm_adgroup=Sensors%20%26%20Transducers&utm_source=google&utm_medium=cpc&utm_campaign=Dynamic%20Search_EN_RLSA_Buyers&utm_term=&utm_content=Sensors%20%26%20Transducers&gclid=CjwKCAjwmeiIBhA6EiwA-uaeFRJvJ3rLHPiHJND-PSO5aePXsmi2i962wfCCjfp96LtXLJMJ6MAUsBoClz0QAvD_BwE)
 
 - [MPU 6050 Inertial Measurement Unit (for wave height, direction etc.)](https://www.adafruit.com/product/3886)
-
-- [Vernier Sensors](https://www.vernier.com/product-category/?category=sensors&page_num=1)
-
 
 # Fabrication
 
 - Read the "Complete Guide to Building Your Very Own Algae Monitoring Buoy"
 
-# Download jupyter to your computer and run "Visualization_Notebook.ipynb"
+# Viewing Results
+
+- Download jupyter to your computer and run "Visualization_Notebook.ipynb"
