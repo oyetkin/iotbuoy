@@ -96,7 +96,7 @@ Designed by [Analytical Mechanics Associates](https://www.ama-inc.com/) and the 
 
 # Other Interesting Sensors
 
-- [BME 280 Temperature, Pressure and Humidity Sensor](https://www.adafruit.com/product/2652?gclid=CjwKCAjwmeiIBhA6EiwA-uaeFSZ-NF_fIGoMKItD13WAFwLuqSzOlsIt3QiFYIm7f4G2JHgIPPHd5BoCa6EQAvD_BwE)
+- [BME 680 Temperature, Pressure and Humidity Sensor](https://www.adafruit.com/product/3660)
 
 - [DHT-11 Temperature/Humidity Sensor](https://www.adafruit.com/product/386)
 
