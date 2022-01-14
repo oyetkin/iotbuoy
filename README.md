@@ -7,7 +7,7 @@ Lake Erie Algae Bloom 2019, (Image credit NOAA)
 An open source, low-cost envirnmental buoy designed to monitor the health of lakes, rivers, estuaries and tidal regions with particular emphasis on algae blooms.
 Designed by [Analytical Mechanics Associates](https://www.ama-inc.com/) and the [Virginia Modeling, Analysis & Simulation Center (VMASC)](https://www.odu.edu/vmasc). This project is compatible with the [Open Data Cube](https://www.opendatacube.org/), which is an open-source platform that can ingest data from a variety of sensors and has the goal of making environmental monitoring simple and highly accessible. An overview of the current progress is posted [here](https://github.com/oyetkin/iotbuoy/blob/main/BuoyPresentation1.pdf)
 
-# Buoy Specific Hardware Required
+# Building your Buoy - Buoy Specific Hardware Required
 
 ### 1. Arduino MEGA or ELEGOO MEGA
 
@@ -81,8 +81,6 @@ Designed by [Analytical Mechanics Associates](https://www.ama-inc.com/) and the 
 
 # Other Items Required
 
-- Zip Ties
-- SLA Resin
 - SD Card
 - Jumper wires
 - Header pins
@@ -90,9 +88,9 @@ Designed by [Analytical Mechanics Associates](https://www.ama-inc.com/) and the 
 - Soldering iron
 - Wire strippers
 - Heat shrink tubing
+- Electrical tape
 - DP 100 epoxy
 - Rope/anchor OR Rope/mooring OR free-floating
-
 
 # Other Interesting Sensors
 
@@ -125,6 +123,8 @@ OR
 - [Vernier Sensors](https://www.vernier.com/product-category/?category=sensors&page_num=1)
 
 
-### Harmful Algae Bloom Information
+# Fabrication
 
-- [HAB Guides and more](https://wcwc.ca/cyanobacteria-cyanotoxins/)
+- Read the "Complete Guide to Building Your Very Own Algae Monitoring Buoy"
+
+# Download jupyter to your computer and run "Visualization_Notebook.ipynb"
