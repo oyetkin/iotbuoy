@@ -104,8 +104,6 @@ Designed by [Analytical Mechanics Associates](https://www.ama-inc.com/) and the 
 
 - [Waterproof Thermistor](https://www.adafruit.com/product/372)
 
-- [pH Sensor - BaiBiinoom](https://www.amazon.com/dp/B08T14MHYM/ref=sspa_dk_detail_5?psc=1&pd_rd_i=B08T14MHYM&pd_rd_w=985e5&pf_rd_p=887084a2-5c34-4113-a4f8-b7947847c308&pd_rd_wg=uMPfo&pf_rd_r=P2YGNQ6FN71QT09KWQ5C&pd_rd_r=686f8153-25fd-4026-99d0-7fb76ffa969c&spLa=ZW5jcnlwdGVkUXVhbGlmaWVyPUExOUZRSlJLT0NGOFg1JmVuY3J5cHRlZElkPUEwMDczNzQyMktISUpDUU1BMDlINyZlbmNyeXB0ZWRBZElkPUEwOTQ1MDQxM0dNN0RCVURDSUsxNiZ3aWRnZXROYW1lPXNwX2RldGFpbCZhY3Rpb249Y2xpY2tSZWRpcmVjdCZkb05vdExvZ0NsaWNrPXRydWU=)
-OR
 - [pH Sensor - TEKCOPLUS](https://www.amazon.com/Replacement-Electrode-Connector-Controller-Hydroponics/dp/B09681C36B/ref=sr_1_19?dchild=1&keywords=ph+meter+electrode&qid=1629149917&sr=8-19)
 OR
 - [pH Sensor - Vernier](https://www.vernier.com/product/ph-sensor/)
