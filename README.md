@@ -49,11 +49,7 @@ Designed by [Analytical Mechanics Associates](https://www.ama-inc.com/) and the 
 
 ### 11. [Adafruit TPL5110 Breakout Board](https://www.adafruit.com/product/3435)
 
-### 12. [2 x Logic Level MOSFETs](https://www.adafruit.com/product/355?gclid=Cj0KCQiAkZKNBhDiARIsAPsk0WjnNOXiQNRGiAEgli75LM5E2M7oeG2U099ojSzUixjhvhauOlB4FwMaAmLGEALw_wcB)
-
-### 13. [1 x 5V Relay](https://www.amazon.com/dp/B00LW15A4W/ref=sspa_dk_detail_1?psc=1&pd_rd_i=B00LW15A4W&pd_rd_w=aOwYS&pf_rd_p=887084a2-5c34-4113-a4f8-b7947847c308&pd_rd_wg=d9OYw&pf_rd_r=2T88CXQQATMBQ5GCT5P3&pd_rd_r=3e0135cb-89a8-48af-9e94-0d640f9c0973&spLa=ZW5jcnlwdGVkUXVhbGlmaWVyPUFDTlpFWDJKQjc1U04mZW5jcnlwdGVkSWQ9QTA4Mjc2MTYzQVJSVUhUQzg2RFlLJmVuY3J5cHRlZEFkSWQ9QTAwNzIwMDAzMFYxS09RSEVZQ0ZVJndpZGdldE5hbWU9c3BfZGV0YWlsJmFjdGlvbj1jbGlja1JlZGlyZWN0JmRvTm90TG9nQ2xpY2s9dHJ1ZQ==)
-
-### 14. Housing
+### 12. Housing
 - Buoy with CAD files provided [here](https://github.com/oyetkin/iotbuoy/tree/main/CAD_Files)
 
 - Waterproof box
